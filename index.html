@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Health Tracker</title>
+    <link rel="stylesheet" href="styleBackup.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <button id="toggle-sidebar-btn">☰</button>
+    <div id="sidebar" class="sidebar">
+        <div id="profile-info">
+            <p id="display-username"></p>
+            <p id="display-bio"></p>
+        </div>
+        <nav>
+            <button id="home-btn">Home</button>
+            <button id="profile-btn">Profile</button>
+            <button id="forum-btn">Forum</button>
+            <button id="logout-btn">Logout</button>
+        </nav>
+    </div>
+
+    <!-- Registration Page -->
+    <div id="register-page" class="page hidden">
+        <h2>Register</h2>
+        <form id="register-form">
+            <label for="register-username">Username:</label>
+            <input type="text" id="register-username" required>
+            <label for="register-password">Password:</label>
+            <input type="password" id="register-password" required>
+            <button type="submit">Register</button>
+        </form>
+        <p>Already have an account? <a href="#" id="go-to-login">Login here</a></p>
+    </div>
+
+    <!-- Login Page -->
+    <div id="login-page" class="page hidden">
+        <h2>Login</h2>
+        <form id="login-form">
+            <label for="login-username">Username:</label>
+            <input type="text" id="login-username" required>
+            <label for="login-password">Password:</label>
+            <input type="password" id="login-password" required>
+            <button type="submit">Login</button>
+        </form>
+        <p>Don't have an account? <a href="#" id="go-to-register">Register here</a></p>
+    </div>
+
+    <div id="main-container" class="container hidden">
+        <h1>Mental Health Tracker</h1>
+        <nav class="susun">
+            <button id="log-mood-btn" class="button">Log Mood</button>
+            <button id="view-entries-btn" class="button">View Past Entries</button>
+        </nav>
+        <section id="log-mood-section">
+            <form id="mood-form">
+                <label for="date">Date</label>
+                <input type="date" id="date" required>
+                
+                <label for="mood">How are you feeling today?</label>
+                <div class="mood-buttons">
+                    <button type="button" class="mood-btn" data-mood="Happy">😊 Happy</button>
+                    <button type="button" class="mood-btn" data-mood="Sad">😢 Sad</button>
+                    <button type="button" class="mood-btn" data-mood="Anxious">😟 Anxious</button>
+                    <button type="button" class="mood-btn" data-mood="Stressed">😫 Stressed</button>
+                    <button type="button" class="mood-btn" data-mood="Calm">😌 Calm</button>
+                </div>
+                <input type="hidden" id="mood" required>
+                
+                <label for="stress">Stress Level (1-10)</label>
+                <input type="range" id="stress" min="1" max="10" step="1" value="5" required>
+                <span id="stress-value">5</span>
+                
+                <label for="activities">Activities</label>
+                <input type="text" id="activities" placeholder="Describe your activities">
+                
+                <button type="submit">Log Mood</button>
+            </form>
+            
+            <div id="mood-total-chart-container">
+                <h3>Your Mood This Month</h3>
+                <canvas id="mood-total-chart"></canvas>
+            </div>
+            
+            <div id="stress-chart-container">
+                <h3>Stress Level Over Time</h3>
+                <canvas id="stress-chart"></canvas>
+            </div>
+        </section>
+        
+        <section id="past-entries-section" class="hidden">
+            <label for="filter-date">Filter by Date</label>
+            <input type="date" id="filter-date">
+            <ul id="entry-list" class="entry-list"></ul>
+        </section>
+    </div>
+
+    <div id="profile-page" class="page hidden">
+        <h2>Profile</h2>
+        <form id="profile-form">
+            <label for="profile-username">Username:</label>
+            <input type="text" id="profile-username" required>
+            <label for="profile-password">Password:</label>
+            <input type="password" id="profile-password">
+            <label for="profile-bio">Bio:</label>
+            <textarea id="profile-bio"></textarea>
+            <button type="submit">Save</button>
+        </form>
+    </div>
+
+    <div id="forum-page" class="page hidden">
+        <h1>Forum</h1>
+        <div id="forum-wrapper">
+            <ul id="forum-messages" class="forum-messages"></ul>
+        </div>
+        <form id="forum-form">
+            
+        </form>
+        <div class="chatbox">
+            <a href="https://t.me/+WQuiK-LIM_80ZjVl" target="_blank">
+               <i class="fa fa-telegram" style="font-size:24px"></i>
+                <span>Chat with us on Telegram</span>
+            </a>
+        </div>
+        <div class="description-box">
+            <h3>Mental Health Tracking Application Support Service</h3>
+            <div id="description" class="message-display">
+                <p>Welcome to the Mental Health Tracking Application Support Service!</p>
+                <h3>What We Offer:</h3>
+                <h4>24/7 Customer Support:</h4>
+                <p>Our team is available around the clock to assist you with any questions or issues you may encounter while using the application. Whether you need help navigating features or troubleshooting problems, we are here for you.</p>
+                <h4>Personalized Guidance:</h4>
+                <p>Receive tailored advice and support based on your individual needs and mental health goals. Our experts can provide recommendations on how to make the most out of the application's features to support your mental health journey.</p>
+                <h4>Resource Library:</h4>
+                <p>Access a wealth of resources including articles, videos, and guides on various mental health topics. Stay informed and educated about mental health practices, self-care techniques, and more.</p>
+                <h4>Regular Check-ins:</h4>
+                <p>Stay connected with our support team through regular check-ins to discuss your progress, address any concerns, and celebrate your achievements. We are committed to supporting your ongoing mental health journey.</p>
+                <h4>Confidentiality and Privacy:</h4>
+                <p>We prioritize your privacy and ensure that all your personal information and data are kept confidential. Trust and safety are at the core of our service.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="scriptBackup.js"></script>
+</body>
+</html>
